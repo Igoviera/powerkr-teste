@@ -1,6 +1,11 @@
 package com.powerkr_teste.powerkr.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -11,19 +16,23 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private  Long id;
+
+    @NotEmpty(message = "O nome é obrigatório")
     private String name;
+
+    @NotEmpty(message = "O e-mail é obrigatório")
+    @Column(unique = true)
+    @Email(message = "E-mail invalido")
     private String email;
+
+    @NotEmpty(message = "A senha é obrigatória")
+    @Length(min = 6, message = "A senha deve ter no minimo 6 caracteres")
     private String password;
     private LocalDateTime creationDate;
 
     public Long getId() {
         return id;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -67,5 +76,10 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @PrePersist
+    protected void onCreate() {
+        this.creationDate = LocalDateTime.now();
     }
 }
