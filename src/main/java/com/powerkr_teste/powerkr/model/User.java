@@ -30,6 +30,17 @@ public class User {
     private String password;
     private LocalDateTime creationDate;
 
+    public User(Long id, String name, String email, String password, LocalDateTime creationDate) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.creationDate = creationDate;
+    }
+
+    public User() {
+    }
+
     public Long getId() {
         return id;
     }
@@ -78,4 +89,5 @@ public class User {
     protected void onCreate() {
         this.creationDate = LocalDateTime.now();
     }
+
 }
