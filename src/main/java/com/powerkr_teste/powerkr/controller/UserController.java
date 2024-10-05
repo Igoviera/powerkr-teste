@@ -1,5 +1,6 @@
 package com.powerkr_teste.powerkr.controller;
 
+import com.powerkr_teste.powerkr.dto.UserDTO;
 import com.powerkr_teste.powerkr.model.User;
 import com.powerkr_teste.powerkr.service.UserService;
 import jakarta.validation.Valid;
@@ -15,16 +16,16 @@ public class UserController {
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
-    public User createUser(@Valid @RequestBody User user){
-        return userService.createUser(user);
+    public UserDTO createUser(@Valid @RequestBody UserDTO userDTO){
+        return userService.createUser(userDTO);
     }
     @GetMapping("/{id}")
-    public User findById(@Valid @PathVariable("id") Long id){
+    public UserDTO findById(@Valid @PathVariable("id") Long id){
        return userService.findById(id);
     }
     @PutMapping("/{id}")
-    public User updateUser(@Valid @PathVariable("id") Long id, @RequestBody User user){
-        return userService.updateUser(id, user);
+    public UserDTO updateUser(@PathVariable("id") Long id, @Valid @RequestBody UserDTO userDTO){
+        return userService.updateUser(id, userDTO);
     }
     @DeleteMapping("/{id}")
     public void createUser(@PathVariable("id") Long id){
