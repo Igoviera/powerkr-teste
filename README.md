@@ -21,3 +21,6 @@
 - ``CRUD de entidade``
 - ``Tratamento de exceções``
 - ``Validação de dados``
+
+## ✔️ Acesso através do swagger-ui
+- ``http://localhost:8080/swagger-ui/index.html#/``
