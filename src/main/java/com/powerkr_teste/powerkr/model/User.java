@@ -30,15 +30,14 @@ public class User {
     @NotEmpty(message = "A senha é obrigatória")
     @Length(min = 6, message = "A senha deve ter no minimo 6 caracteres")
     private String password;
-    private UserRole role;
+    //private UserRole role;
     private LocalDateTime creationDate;
 
-    public User(Long id, String name, String email, String password, UserRole role, LocalDateTime creationDate) {
+    public User(Long id, String name, String email, String password, LocalDateTime creationDate) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.role = role;
         this.creationDate = creationDate;
     }
 
@@ -72,13 +71,13 @@ public class User {
         this.password = password;
     }
 
-    public UserRole getRole() {
-        return role;
-    }
-
-    public void setRole(UserRole role) {
-        this.role = role;
-    }
+//    public UserRole getRole() {
+//        return role;
+//    }
+//
+//    public void setRole(UserRole role) {
+//        this.role = role;
+//    }
 
     public LocalDateTime getCreationDate() {
         return creationDate;

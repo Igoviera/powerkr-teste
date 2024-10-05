@@ -25,9 +25,11 @@ public class UserService {
     public UserDTO updateUser(Long id, UserDTO userDTO){
         return userRepository.findById(id)
                 .map(existUser -> {
-                    existUser.setName(userDTO.name());
-                    existUser.setEmail(userDTO.email());
-                    existUser.setPassword(userDTO.password());
+                    User updatedUser = userMapper.toEntity(userDTO);
+
+                    updatedUser.setName(userDTO.name());
+                    updatedUser.setEmail(userDTO.email());
+                    updatedUser.setPassword(userDTO.password());
 
                     return userMapper.toDTO(userRepository.save(existUser));
                 }).orElseThrow(() -> new RecordNotFoundException(id));
