@@ -3,7 +3,7 @@
 ## Instalação
 1 Clone o repositório:
 ```bash
-  https://github.com/Igoviera/powerkr-teste.git
+  git clone https://github.com/Igoviera/powerkr-teste.git
 ```
 2 Instalar dependências com Maven
 
@@ -22,7 +22,7 @@ Faça login no app para poder realizar as operações CRUD:
 ## A API fornece os seguintes endpoints:
 ```bash
   GET /api/powerkrTeste/login - Login no App
-  GET /api/powerkrTeste/users/1 - Buscar usuário por ID
+  GET /api/powerkrTeste/users/id - Buscar usuário por ID
   POT /api/powerkrTeste/users - Cadastrar usuário
   PUT /api/powerkrTeste/users - atualizar usuário 
   DELETE /api/powerkrTeste/users - deletar usuário 
