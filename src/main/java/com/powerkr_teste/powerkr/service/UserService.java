@@ -10,14 +10,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserService {
+
     @Autowired
     private UserRepository userRepository;
+
     @Autowired
     private UserMapper userMapper;
 
-    public UserDTO createUser(UserDTO userDTO){
-        return userMapper.toDTO(userRepository.save(userMapper.toEntity(userDTO)));
-    }
     public UserDTO findById(Long id){
         return userMapper.toDTO(userRepository.findById(id)
                 .orElseThrow(() -> new RecordNotFoundException(id)));

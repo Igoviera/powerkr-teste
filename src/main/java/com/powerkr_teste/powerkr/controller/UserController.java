@@ -1,14 +1,15 @@
 package com.powerkr_teste.powerkr.controller;
 
 import com.powerkr_teste.powerkr.dto.UserDTO;
-import com.powerkr_teste.powerkr.model.User;
 import com.powerkr_teste.powerkr.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.SecurityConfig;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,17 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
     @Autowired
     private UserService userService;
-
-    @Operation(summary = "Cadastrar usuário", method = "POST")
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Usuário cadastrado com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
-    })
-    @PostMapping()
-    @ResponseStatus(HttpStatus.CREATED)
-    public UserDTO createUser(@Valid @RequestBody UserDTO userDTO){
-        return userService.createUser(userDTO);
-    }
 
     @Operation(summary = "Bucar usuário por ID", method = "GET")
     @ApiResponses(value = {
