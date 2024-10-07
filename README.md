@@ -24,8 +24,8 @@ Faça login no app para poder realizar as operações CRUD:
   GET /api/powerkrTeste/login - Login no App
   GET /api/powerkrTeste/users/id - Buscar usuário por ID
   POT /api/powerkrTeste/users - Cadastrar usuário
-  PUT /api/powerkrTeste/users - atualizar usuário 
-  DELETE /api/powerkrTeste/users - deletar usuário 
+  PUT /api/powerkrTeste/users/id - atualizar usuário 
+  DELETE /api/powerkrTeste/users/id - deletar usuário 
 ```
 
 ## ✔️ Técnicas e tecnologias utilizadas
