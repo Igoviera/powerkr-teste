@@ -2,7 +2,8 @@ package com.powerkr_teste.powerkr.controller;
 
 import com.powerkr_teste.powerkr.dto.AuthenticationDTO;
 import com.powerkr_teste.powerkr.dto.LoginResponseDTO;
-import com.powerkr_teste.powerkr.dto.RegisterDTO;
+import com.powerkr_teste.powerkr.dto.UserDTO;
+import com.powerkr_teste.powerkr.dto.mapper.UserMapper;
 import com.powerkr_teste.powerkr.model.User;
 import com.powerkr_teste.powerkr.repository.UserRepository;
 import com.powerkr_teste.powerkr.security.TokenService;
@@ -31,6 +32,8 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
+    @Autowired
+    private UserMapper userMapper;
 
     @Operation(summary = "Login usuário", method = "POST")
     @ApiResponses(value = {
@@ -60,13 +63,15 @@ public class AuthenticationController {
     })
     @PostMapping("/register")
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity register(@RequestBody @Valid RegisterDTO registerDTO){
-        if (this.userRepository.findByEmail(registerDTO.email()) != null) return ResponseEntity.badRequest().build();
+    public ResponseEntity register(@RequestBody @Valid UserDTO userDTO){
+        if (this.userRepository.findByEmail(userDTO.email()) != null){
+            return ResponseEntity.badRequest().body("E-mail já está em uso.");
+        }
 
-        String encryptedPassword = new BCryptPasswordEncoder().encode(registerDTO.password());
-        User newUser = new User(registerDTO.name(), registerDTO.email(), encryptedPassword, registerDTO.role());
+        String encryptedPassword = new BCryptPasswordEncoder().encode(userDTO.password());
 
-        userRepository.save(newUser);
+        userRepository.save(userMapper.toEntity(userDTO));
+
         return ResponseEntity.ok().build();
     }
 

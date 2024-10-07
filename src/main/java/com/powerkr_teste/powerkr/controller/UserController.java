@@ -1,5 +1,6 @@
 package com.powerkr_teste.powerkr.controller;
 
+import com.powerkr_teste.powerkr.dto.ResponseUserDTO;
 import com.powerkr_teste.powerkr.dto.UserDTO;
 import com.powerkr_teste.powerkr.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -24,7 +25,7 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
     })
     @GetMapping("/{id}")
-    public UserDTO findById(@Valid @PathVariable("id") Long id){
+    public ResponseUserDTO findById(@Valid @PathVariable("id") Long id){
        return userService.findById(id);
     }
 
@@ -34,7 +35,7 @@ public class UserController {
             @ApiResponse(responseCode = "400", description = "Parametros inválidos"),
     })
     @PutMapping("/{id}")
-    public UserDTO updateUser(@PathVariable("id") Long id, @Valid @RequestBody UserDTO userDTO){
+    public ResponseUserDTO updateUser(@PathVariable("id") Long id, @Valid @RequestBody UserDTO userDTO){
         return userService.updateUser(id, userDTO);
     }
 
