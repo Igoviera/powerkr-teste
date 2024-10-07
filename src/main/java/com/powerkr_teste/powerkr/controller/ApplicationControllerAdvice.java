@@ -15,17 +15,17 @@ public class ApplicationControllerAdvice {
 
     @ExceptionHandler(RecordNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public ApiErros handleNotFoundExeception(RecordNotFoundException ex){
-        return new ApiErros(ex.getMessage());
+    public ResponseError handleNotFoundExeception(RecordNotFoundException ex){
+        return new ResponseError(ex.getMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public ApiErros handleMethodArgumentNotValidException(MethodArgumentNotValidException ex){
+    public ResponseError handleMethodArgumentNotValidException(MethodArgumentNotValidException ex){
         List<String> errors = ex.getBindingResult().getAllErrors()
                 .stream()
                 .map(error -> error.getDefaultMessage())
                 .collect(Collectors.toList());
-        return new ApiErros(errors);
+        return new ResponseError(errors);
     }
 }

@@ -4,10 +4,8 @@ import com.powerkr_teste.powerkr.dto.ResponseUserDTO;
 import com.powerkr_teste.powerkr.dto.UserDTO;
 import com.powerkr_teste.powerkr.dto.mapper.UserMapper;
 import com.powerkr_teste.powerkr.exceptions.RecordNotFoundException;
-import com.powerkr_teste.powerkr.model.User;
 import com.powerkr_teste.powerkr.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

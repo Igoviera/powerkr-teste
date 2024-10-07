@@ -3,13 +3,13 @@ package com.powerkr_teste.powerkr.controller;
 import java.util.Arrays;
 import java.util.List;
 
-public class ApiErros {
+public class ResponseError {
     private List<String> errors;
 
-    public ApiErros(List<String> errors){
+    public ResponseError(List<String> errors){
         this.errors = errors;
     }
-    public ApiErros(String messageErrors){
+    public ResponseError(String messageErrors){
         this.errors = Arrays.asList(messageErrors);
     }
 

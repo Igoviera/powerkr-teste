@@ -41,7 +41,7 @@ public class UserController {
 
     @Operation(summary = "Excluir usuário", method = "DELETE")
     @DeleteMapping("/{id}")
-    public void createUser(@PathVariable("id") Long id){
+    public void deleteUser(@PathVariable("id") Long id){
         userService.deleteUser(id);
     }
 }
